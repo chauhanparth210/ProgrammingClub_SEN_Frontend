@@ -1,0 +1,52 @@
+.navbar {
+  display: flex;
+  height: 10vh;
+  justify-content: space-between;
+  align-items: center;
+  //   box-shadow: 0 0.2rem 1rem rgba(230, 230, 230, 0.8);
+  &__logo {
+    padding: 0 2rem;
+    width: 20%;
+  }
+  &__container {
+    padding: 0 2rem;
+    width: 80%;
+  }
+  &__items {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  &__link {
+    list-style: none;
+    margin: 0 3rem;
+  }
+  &__item {
+    text-decoration: none;
+    font-size: 2rem;
+    color: black;
+  }
+  &__button {
+    background-color: black;
+    color: white;
+    // font-weight: bold;
+    border: 2px solid black;
+    padding: 0.6rem 0.8rem;
+    border-radius: 0.5rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .navbar {
+    &__container,
+    &__logo {
+      padding: 0 0.8rem;
+    }
+    &__link {
+      margin: 0 1rem;
+    }
+    &__item {
+      font-size: 1.5rem;
+    }
+  }
+}
