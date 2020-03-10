@@ -1,0 +1,17 @@
+.homepage {
+  height: 90vh;
+  position: relative;
+  &__text {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    &--primary {
+      font-size: 9rem;
+      font-weight: bold;
+    }
+    &--secondary {
+      font-size: 6rem;
+    }
+  }
+}
