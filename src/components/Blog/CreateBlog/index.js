@@ -1,6 +1,18 @@
 import React, { Component } from "react";
-import { Editor, EditorState, RichUtils } from "draft-js";
+import { EditorState } from "draft-js";
+import createEmojiPlugin from "draft-js-emoji-plugin";
+import Editor from "draft-js-plugins-editor";
+import createInlineToolbarPlugin from "draft-js-inline-toolbar-plugin";
+
+import "draft-js-emoji-plugin/lib/plugin.css";
+import "draft-js-inline-toolbar-plugin/lib/plugin.css";
 import "./style.scss";
+
+const emojiPlugin = createEmojiPlugin();
+const { EmojiSuggestions } = emojiPlugin;
+
+const inlineToolbarPlugin = createInlineToolbarPlugin();
+const { InlineToolbar } = inlineToolbarPlugin;
 
 class App extends Component {
   constructor() {
@@ -15,38 +27,21 @@ class App extends Component {
     this.setState({ editorState });
   };
 
-  handleKeyCommand = command => {
-    const newState = RichUtils.handleKeyCommand(
-      this.state.editorState,
-      command
-    );
-
-    if (newState) {
-      this.onChange(newState);
-      return "handled";
-    }
-
-    return "not-handled";
-  };
-
-  onUnderlineClick = () => {
-    this.onChange(
-      RichUtils.toggleInlineStyle(this.state.editorState, "UNDERLINE")
-    );
-  };
-
-  onToggleCode = () => {
-    this.onChange(RichUtils.toggleCode(this.state.editorState));
-  };
-
   render() {
     return (
-      <div className="editor">
+      <div className="editor--playground">
+        <input type="text" className="title" placeholder="Title of the post" />
         <Editor
+          placeholder="Post..."
           editorState={this.state.editorState}
-          handleKeyCommand={this.handleKeyCommand}
+          plugins={[emojiPlugin, inlineToolbarPlugin]}
           onChange={this.onChange}
+          ref={element => {
+            this.editor = element;
+          }}
         />
+        <EmojiSuggestions />
+        <InlineToolbar />
       </div>
     );
   }
