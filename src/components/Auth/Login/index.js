@@ -10,6 +10,9 @@ const LoginPage = ({ errors, touched, handleSubmit, isSubmitting }) => {
     <div className="form">
       <Form onSubmit={handleSubmit} className="form__container">
         <div className="form__wrapper">
+          <span className="form__header--text">Login</span>
+        </div>
+        <div className="form__wrapper">
           <Field
             type="number"
             name="studentID"

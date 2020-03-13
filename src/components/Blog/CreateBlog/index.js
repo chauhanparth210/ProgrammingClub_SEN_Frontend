@@ -78,9 +78,6 @@ class HeadlinesButton extends Component {
   }
 }
 
-// const inlineToolbarPlugin = createInlineToolbarPlugin();
-// const { InlineToolbar } = inlineToolbarPlugin;
-
 class App extends Component {
   constructor() {
     super();
@@ -96,33 +93,42 @@ class App extends Component {
 
   render() {
     return (
-      <div className="editor--playground">
-        <input type="text" className="title" placeholder="Title of the post" />
-        <Editor
-          placeholder="Post..."
-          editorState={this.state.editorState}
-          plugins={[emojiPlugin, inlineToolbarPlugin]}
-          onChange={this.onChange}
-          ref={element => {
-            this.editor = element;
-          }}
-        />
-        <EmojiSuggestions />
-        <InlineToolbar>
-          {// may be use React.Fragment instead of div to improve perfomance after React 16
-          externalProps => (
-            <div>
-              <BoldButton {...externalProps} />
-              <ItalicButton {...externalProps} />
-              <UnderlineButton {...externalProps} />
-              {/* <CodeButton {...externalProps} /> */}
-              <Separator {...externalProps} />
-              <HeadlinesButton {...externalProps} />
-              {/* <CodeBlockButton {...externalProps} /> */}
-            </div>
-          )}
-        </InlineToolbar>
-      </div>
+      <>
+        <div className="editor--playground">
+          <input
+            type="text"
+            className="title"
+            placeholder="Title of the post"
+          />
+          <Editor
+            placeholder="Post..."
+            editorState={this.state.editorState}
+            plugins={[emojiPlugin, inlineToolbarPlugin]}
+            onChange={this.onChange}
+            ref={element => {
+              this.editor = element;
+            }}
+          />
+          <EmojiSuggestions />
+          <InlineToolbar>
+            {// may be use React.Fragment instead of div to improve perfomance after React 16
+            externalProps => (
+              <div>
+                <BoldButton {...externalProps} />
+                <ItalicButton {...externalProps} />
+                <UnderlineButton {...externalProps} />
+                <Separator {...externalProps} />
+                <HeadlinesButton {...externalProps} />
+              </div>
+            )}
+          </InlineToolbar>
+        </div>
+        <div className="form__wrapper wrapper">
+          <button type="submit" className="form__submit">
+            Post it...
+          </button>
+        </div>
+      </>
     );
   }
 }

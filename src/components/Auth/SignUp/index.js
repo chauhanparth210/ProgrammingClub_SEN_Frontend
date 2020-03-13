@@ -7,6 +7,9 @@ const SignUpPage = ({ errors, touched, handleSubmit, isSubmitting }) => {
     <div className="form">
       <Form onSubmit={handleSubmit} className="form__container">
         <div className="form__wrapper">
+          <span className="form__header--text">Sign Up</span>
+        </div>
+        <div className="form__wrapper">
           <Field
             type="text"
             name="name"
@@ -45,7 +48,7 @@ const SignUpPage = ({ errors, touched, handleSubmit, isSubmitting }) => {
             type="submit"
             className="form__submit"
           >
-            Sign Up
+            Create Account
           </button>
         </div>
       </Form>
