@@ -1,14 +1,22 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
-import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
 
-import "./style.scss";
-
-const LoginPage = ({ errors, touched, handleSubmit, isSubmitting }) => {
+const SignUpPage = ({ errors, touched, handleSubmit, isSubmitting }) => {
   return (
     <div className="form">
       <Form onSubmit={handleSubmit} className="form__container">
+        <div className="form__wrapper">
+          <Field
+            type="text"
+            name="name"
+            placeholder="Student Name"
+            className="form__input"
+          />
+          {touched.name && errors.name && (
+            <div className="form__error">{errors.name}</div>
+          )}
+        </div>
         <div className="form__wrapper">
           <Field
             type="number"
@@ -32,23 +40,13 @@ const LoginPage = ({ errors, touched, handleSubmit, isSubmitting }) => {
           )}
         </div>
         <div className="form__wrapper">
-          <div className="form__wrap">
-            <button
-              disabled={isSubmitting}
-              type="submit"
-              className="form__submit"
-            >
-              Log in
-            </button>
-            <NavLink to="/forgot-password" className="form__navbar--text">
-              Forgot Password ?
-            </NavLink>
-          </div>
-        </div>
-        <div className="form__wrapper">
-          <NavLink to="/create-account" className="form__navbar--text">
-            Create New Account ?
-          </NavLink>
+          <button
+            disabled={isSubmitting}
+            type="submit"
+            className="form__submit"
+          >
+            Sign Up
+          </button>
         </div>
       </Form>
     </div>
@@ -56,8 +54,9 @@ const LoginPage = ({ errors, touched, handleSubmit, isSubmitting }) => {
 };
 
 const FormikEnhance = withFormik({
-  mapPropsToValues: ({ studentID, password }) => {
+  mapPropsToValues: ({ studentID, password, name }) => {
     return {
+      name: name || "",
       studentID: studentID || "",
       password: password || ""
     };
@@ -68,7 +67,8 @@ const FormikEnhance = withFormik({
     ),
     password: Yup.string()
       .required("Password is required")
-      .min(6, "Password must be 6 characters long")
+      .min(6, "Password must be 6 characters long"),
+    name: Yup.string().required("Name is required")
   }),
   handleSubmit: (
     values,
@@ -78,6 +78,6 @@ const FormikEnhance = withFormik({
     resetForm();
     setSubmitting(false);
   }
-})(LoginPage);
+})(SignUpPage);
 
 export default FormikEnhance;

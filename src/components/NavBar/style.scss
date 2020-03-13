@@ -25,6 +25,7 @@
     text-decoration: none;
     font-size: 2rem;
     color: black;
+    padding-bottom: 0.4rem;
   }
   &__button {
     background-color: black;
@@ -49,4 +50,8 @@
       font-size: 1.5rem;
     }
   }
+}
+
+.active__link {
+  border-bottom: 0.3rem solid;
 }

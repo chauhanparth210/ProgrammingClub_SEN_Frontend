@@ -20,17 +20,29 @@ const NavBar = () => {
       <div className="navbar__container">
         <ul className="navbar__items">
           <li className="navbar__link">
-            <NavLink to="/create-blog" className="navbar__item">
+            <NavLink
+              to="/create-blog"
+              activeClassName="active__link"
+              className="navbar__item"
+            >
               Create Blog
             </NavLink>
           </li>
           <li className="navbar__link">
-            <NavLink to="/blog" className="navbar__item">
+            <NavLink
+              to="/blog"
+              activeClassName="active__link"
+              className="navbar__item"
+            >
               Blog
             </NavLink>
           </li>
           <li className="navbar__link">
-            <NavLink to="/login" className="navbar__item navbar__button">
+            <NavLink
+              to="/login"
+              activeClassName="active__link"
+              className="navbar__item "
+            >
               Log in
             </NavLink>
           </li>
