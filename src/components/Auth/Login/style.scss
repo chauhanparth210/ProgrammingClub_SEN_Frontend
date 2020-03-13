@@ -3,10 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   &__container {
-    display: flex;
     width: 100%;
-    flex-direction: column;
+    position: absolute;
+    top: 15%;
   }
   &__wrapper {
     margin: 1rem 30%;

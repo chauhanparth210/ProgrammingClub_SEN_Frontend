@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { EditorState } from "draft-js";
+import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import createEmojiPlugin from "draft-js-emoji-plugin";
 import Editor from "draft-js-plugins-editor";
 import {
@@ -82,13 +82,50 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      editorState: EditorState.createEmpty()
+      title: "",
+      editorState: EditorState.createEmpty(),
+      createdBy: "",
+      createDate: ""
     };
+    const content = window.localStorage.getItem("content");
+
+    if (content) {
+      this.state.editorState = EditorState.createWithContent(
+        convertFromRaw(JSON.parse(content))
+      );
+    }
   }
 
   onChange = editorState => {
-    console.log(editorState);
-    this.setState({ editorState });
+    const contentState = editorState.getCurrentContent();
+    this.saveContent(contentState);
+    this.setState({
+      editorState
+    });
+  };
+
+  onTitleUpdate = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  onSavePost = () => {
+    const { title, editorState, createdBy } = this.state;
+    const post = {
+      title,
+      editorState: convertToRaw(editorState.getCurrentContent()),
+      createdBy,
+      createDate: Date.now()
+    };
+    window.localStorage.setItem("post", JSON.stringify(post));
+  };
+
+  saveContent = content => {
+    window.localStorage.setItem(
+      "content",
+      JSON.stringify(convertToRaw(content))
+    );
   };
 
   render() {
@@ -98,7 +135,9 @@ class App extends Component {
           <input
             type="text"
             className="title"
+            name="title"
             placeholder="Title of the post"
+            onChange={this.onTitleUpdate}
           />
           <Editor
             placeholder="Post..."
@@ -124,7 +163,11 @@ class App extends Component {
           </InlineToolbar>
         </div>
         <div className="form__wrapper wrapper">
-          <button type="submit" className="form__submit">
+          <button
+            type="submit"
+            className="form__submit"
+            onClick={this.onSavePost}
+          >
             Post it...
           </button>
         </div>

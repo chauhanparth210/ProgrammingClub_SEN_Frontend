@@ -5,7 +5,16 @@ import * as Yup from "yup";
 const ForgotPassword = ({ errors, touched, handleSubmit, isSubmitting }) => {
   return (
     <div className="form">
-      <Form onSubmit={handleSubmit} className="form__container">
+      <Form
+        onSubmit={handleSubmit}
+        className="form__container"
+        style={{ marginTop: "4%" }}
+      >
+        <div className="form__wrapper">
+          <span className="form__header--text" style={{ fontSize: "3.5rem" }}>
+            Forgot Password
+          </span>
+        </div>
         <div className="form__wrapper">
           <Field
             type="number"
