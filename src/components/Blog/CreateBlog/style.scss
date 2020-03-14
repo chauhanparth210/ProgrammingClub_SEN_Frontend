@@ -15,6 +15,7 @@
   outline: none;
   font-family: "Roboto Slab", serif;
   margin-bottom: 2rem;
+  font-weight: bold;
 }
 .title::placeholder {
   font-family: "Roboto Slab", serif;
@@ -80,4 +81,19 @@
 
 .wrapper > button {
   cursor: pointer;
+}
+
+.post__metadata {
+  background-color: #f2f2f257;
+  width: 50%;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-left: 0.5rem solid #808080;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  &--createdBy {
+    align-self: flex-end;
+    font-weight: bold;
+  }
 }

@@ -84,7 +84,7 @@ class App extends Component {
     this.state = {
       title: "",
       editorState: EditorState.createEmpty(),
-      createdBy: "",
+      createdBy: "Parth Chauhan",
       createDate: ""
     };
     const content = window.localStorage.getItem("content");

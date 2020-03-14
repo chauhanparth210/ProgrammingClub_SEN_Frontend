@@ -7,6 +7,7 @@ import LoginPage from "../components/Auth/Login";
 import EditorPage from "../components/Blog/CreateBlog";
 import SignUpPage from "../components/Auth/SignUp";
 import ForgotPassword from "../components/Auth/ForgotPassword";
+import ViewBlog from "../components/Blog/ViewBlog";
 
 function RouterPage() {
   return (
@@ -28,6 +29,9 @@ function RouterPage() {
           </Route>
           <Route path="/forgot-password" exact>
             <ForgotPassword />
+          </Route>
+          <Route path="/blog" exact>
+            <ViewBlog />
           </Route>
         </Switch>
       </div>
