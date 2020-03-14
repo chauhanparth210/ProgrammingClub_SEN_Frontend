@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
 import { Editor, convertFromRaw, EditorState } from "draft-js";
+import Comments from "../CommentSection";
 
 class ReadOnlyEditor extends Component {
   constructor() {
@@ -21,7 +22,7 @@ class ReadOnlyEditor extends Component {
 
   componentDidMount() {
     const post = JSON.parse(window.localStorage.getItem("post"));
-    console.log(post === null);
+    // console.log(post === null);
     const { title, createdBy, createDate, editorState } = post;
 
     this.setState({
@@ -30,7 +31,7 @@ class ReadOnlyEditor extends Component {
       createDate: createDate,
       editorState: EditorState.createWithContent(convertFromRaw(editorState))
     });
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   render() {
@@ -43,7 +44,7 @@ class ReadOnlyEditor extends Component {
             overflow: "visible",
             flex: "1",
             height: "auto",
-            marginBottom: "10rem"
+            marginBottom: "4rem"
           }}
         >
           <div className="title">{title}</div>
@@ -55,6 +56,7 @@ class ReadOnlyEditor extends Component {
             <div className="post__metadata--created">Created By </div>
             <div className="post__metadata--createdBy"> - {createdBy}</div>
           </div>
+          <Comments />
         </div>
       </>
     );

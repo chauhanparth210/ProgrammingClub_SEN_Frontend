@@ -1,0 +1,34 @@
+.comment {
+  margin-top: 5rem;
+  font-size: 1.2rem;
+  &__input {
+    resize: none;
+    width: 100%;
+    height: 9rem;
+    font-family: "Roboto Slab", serif;
+    font-size: 1.5rem;
+  }
+  &__input ::placeholder {
+    font-family: "Roboto Slab", serif;
+  }
+  &__submit {
+    margin-top: 0.5rem;
+  }
+  &__component {
+    margin-top: 1.2rem;
+    // border: 0.1rem solid black;
+    &--createdDate {
+      margin-left: 1rem;
+      font-size: 1.5rem;
+      color: #a6a6a6;
+    }
+    &--createBy {
+      font-size: 2.2rem;
+      border-bottom: 0.15rem solid;
+    }
+    &--comment {
+      margin-left: 1.5rem;
+      font-size: 1.6rem;
+    }
+  }
+}
