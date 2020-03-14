@@ -85,7 +85,7 @@
 
 .post__metadata {
   background-color: #f2f2f257;
-  width: 50%;
+  width: 60%;
   margin-top: 1.5rem;
   padding: 1rem;
   border-left: 0.5rem solid #808080;
@@ -95,5 +95,9 @@
   &--createdBy {
     align-self: flex-end;
     font-weight: bold;
+  }
+  &--createdDate {
+    margin: 1rem 0;
+    font-size: 2rem;
   }
 }

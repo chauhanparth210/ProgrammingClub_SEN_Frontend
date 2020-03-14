@@ -83,9 +83,7 @@ class App extends Component {
     super();
     this.state = {
       title: "",
-      editorState: EditorState.createEmpty(),
-      createdBy: "Parth Chauhan",
-      createDate: ""
+      editorState: EditorState.createEmpty()
     };
     const content = window.localStorage.getItem("content");
 
@@ -111,14 +109,19 @@ class App extends Component {
   };
 
   onSavePost = () => {
-    const { title, editorState, createdBy } = this.state;
+    const { title, editorState } = this.state;
     const post = {
       title,
       editorState: convertToRaw(editorState.getCurrentContent()),
-      createdBy,
+      createdBy: "Parth Chauhan",
       createDate: Date.now()
     };
     window.localStorage.setItem("post", JSON.stringify(post));
+    this.setState({
+      editorState: EditorState.createEmpty(),
+      title: ""
+    });
+    window.localStorage.removeItem("content");
   };
 
   saveContent = content => {
@@ -135,6 +138,7 @@ class App extends Component {
           <input
             type="text"
             className="title"
+            value={this.state.title}
             name="title"
             placeholder="Title of the post"
             onChange={this.onTitleUpdate}

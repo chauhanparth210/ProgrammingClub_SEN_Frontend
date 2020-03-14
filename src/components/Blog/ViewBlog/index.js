@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Moment from "react-moment";
 import { Editor, convertFromRaw, EditorState } from "draft-js";
 
 class ReadOnlyEditor extends Component {
@@ -10,25 +11,24 @@ class ReadOnlyEditor extends Component {
       createdBy: "",
       createDate: ""
     };
-    const content = window.localStorage.getItem("content");
-    if (content) {
-      this.state.editorState = EditorState.createWithContent(
-        convertFromRaw(JSON.parse(content))
-      );
-    }
+    // const content = window.localStorage.getItem("content");
+    // if (content) {
+    //   this.state.editorState = EditorState.createWithContent(
+    //     convertFromRaw(JSON.parse(content))
+    //   );
+    // }
   }
 
   componentDidMount() {
     const post = JSON.parse(window.localStorage.getItem("post"));
-    const { title, createdBy, createDate } = post;
-    console.log(post);
+    console.log(post === null);
+    const { title, createdBy, createDate, editorState } = post;
+
     this.setState({
       title: title,
       createdBy: createdBy,
-      createDate: createDate
-      //   editorState: EditorState.createWithContent(
-      //     convertFromRaw(JSON.parse(editorState))
-      //   )
+      createDate: createDate,
+      editorState: EditorState.createWithContent(convertFromRaw(editorState))
     });
     console.log(this.state);
   }
@@ -47,11 +47,13 @@ class ReadOnlyEditor extends Component {
           }}
         >
           <div className="title">{title}</div>
+          <div className="post__metadata--createdDate">
+            <Moment format="DD/MM/YYYY">{createDate}</Moment>
+          </div>
           <Editor editorState={editorState} readOnly={true} />
           <div className="post__metadata">
             <div className="post__metadata--created">Created By </div>
             <div className="post__metadata--createdBy"> - {createdBy}</div>
-            {/* <div className="post__metadata--createdDate">{createDate}</div> */}
           </div>
         </div>
       </>
