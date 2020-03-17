@@ -7,7 +7,7 @@ import {
   LOGOUT_USER,
   DATA_LOADED
 } from "../type";
-import { SERVER_URL } from "../../Utils/constants";
+import { SERVER_URL } from "../../utils/constants";
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
