@@ -8,6 +8,7 @@ import EditorPage from "../components/Blog/CreateBlog";
 import SignUpPage from "../components/Auth/SignUp";
 import ForgotPassword from "../components/Auth/ForgotPassword";
 import ViewBlog from "../components/Blog/ViewBlog";
+import ResetPasswordLink from "../components/Auth/ResetPassword";
 
 function RouterPage() {
   return (
@@ -18,20 +19,23 @@ function RouterPage() {
           <Route path="/" exact>
             <HomePage />
           </Route>
-          <Route path="/login" exact>
+          <Route path="/login">
             <LoginPage />
           </Route>
-          <Route path="/create-blog" exact>
+          <Route path="/create-blog">
             <EditorPage />
           </Route>
-          <Route path="/create-account" exact>
+          <Route path="/create-account">
             <SignUpPage />
           </Route>
-          <Route path="/forgot-password" exact>
+          <Route path="/forgot-password">
             <ForgotPassword />
           </Route>
-          <Route path="/blog" exact>
+          <Route path="/blog">
             <ViewBlog />
+          </Route>
+          <Route path="/reset-password/:token">
+            <ResetPasswordLink />
           </Route>
         </Switch>
       </div>
