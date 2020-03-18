@@ -1,0 +1,43 @@
+.blogs {
+  overflow: auto;
+  margin: 0 5%;
+  font-size: 2rem;
+  padding: 2rem 1.5rem;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.blog__card {
+  flex-basis: 47%;
+  margin: 1.5rem;
+  flex-grow: 1;
+  padding: 1.8rem 2.5rem;
+  min-height: 18rem;
+  border-radius: 1.8rem;
+  background-color: #f1f1f170;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &--title {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  &--oneline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &--button {
+    margin: 0 0.8rem;
+    background: black;
+    color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+  &--likes {
+    align-self: center;
+  }
+}

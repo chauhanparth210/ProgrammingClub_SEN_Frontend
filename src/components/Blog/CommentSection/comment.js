@@ -2,7 +2,7 @@ import React from "react";
 import Moment from "react-moment";
 
 const Comment = props => {
-  console.log(props);
+  // console.log(props);
   return props.comments.map((comment, i) => {
     return (
       <div className="comment__component" key={i}>

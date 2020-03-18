@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
+import { EditorState, convertToRaw } from "draft-js";
 import createEmojiPlugin from "draft-js-emoji-plugin";
 import Editor from "draft-js-plugins-editor";
 import {
@@ -17,6 +17,11 @@ import createInlineToolbarPlugin, {
 import "draft-js-emoji-plugin/lib/plugin.css";
 import "draft-js-inline-toolbar-plugin/lib/plugin.css";
 import "./style.scss";
+
+import axios from "axios";
+import { connect } from "react-redux";
+
+import { SERVER_URL } from "../../../utils/constants";
 
 const emojiPlugin = createEmojiPlugin();
 const { EmojiSuggestions } = emojiPlugin;
@@ -85,13 +90,6 @@ class App extends Component {
       title: "",
       editorState: EditorState.createEmpty()
     };
-    const content = window.localStorage.getItem("content");
-
-    if (content) {
-      this.state.editorState = EditorState.createWithContent(
-        convertFromRaw(JSON.parse(content))
-      );
-    }
   }
 
   onChange = editorState => {
@@ -113,10 +111,20 @@ class App extends Component {
     const post = {
       title,
       editorState: convertToRaw(editorState.getCurrentContent()),
-      createdBy: "Parth Chauhan",
+      createdBy: this.props.id,
       createDate: Date.now()
     };
     window.localStorage.setItem("post", JSON.stringify(post));
+
+    axios
+      .post(`${SERVER_URL}/post/`, post)
+      .then(savePost => {
+        console.log("post is saved..");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
     this.setState({
       editorState: EditorState.createEmpty(),
       title: ""
@@ -180,4 +188,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  id: state.auth.user.id
+});
+
+export default connect(mapStateToProps)(App);

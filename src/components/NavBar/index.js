@@ -3,7 +3,10 @@ import { NavLink } from "react-router-dom";
 import Logo from "../../asserts/pc-logo-2.png";
 import "./style.scss";
 
-const NavBar = () => {
+import { connect } from "react-redux";
+import { logoutUser } from "../../store/Actions/authActions";
+
+const NavBar = props => {
   return (
     <div className="navbar">
       <div className="navbar__logo">
@@ -30,26 +33,39 @@ const NavBar = () => {
           </li>
           <li className="navbar__link">
             <NavLink
-              to="/blog"
+              to="/blogs"
               activeClassName="active__link"
               className="navbar__item"
             >
-              Blog
+              Blogs
             </NavLink>
           </li>
-          <li className="navbar__link">
-            <NavLink
-              to="/login"
-              activeClassName="active__link"
-              className="navbar__item "
+          {!props.isAuthenticated ? (
+            <li className="navbar__link">
+              <NavLink
+                to="/login"
+                activeClassName="active__link"
+                className="navbar__item "
+              >
+                Log in
+              </NavLink>
+            </li>
+          ) : (
+            <button
+              className="navbar__item navbar__button"
+              onClick={props.logoutUser}
             >
-              Log in
-            </NavLink>
-          </li>
+              Log Out
+            </button>
+          )}
         </ul>
       </div>
     </div>
   );
 };
 
-export default NavBar;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { logoutUser })(NavBar);
