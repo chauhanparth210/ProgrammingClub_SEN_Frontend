@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class commentForm extends Component {
   state = {
@@ -11,10 +12,11 @@ class commentForm extends Component {
   };
   onSave = () => {
     const { comment } = this.state;
+    // console.log(this.props.username);
     this.props.saveComment({
       comment,
       date: Date.now(),
-      createdBy: "Parth Chauhan"
+      createdBy: this.props.name
     });
     this.setState({
       comment: ""
@@ -39,4 +41,8 @@ class commentForm extends Component {
   }
 }
 
-export default commentForm;
+const mapStateToProps = state => ({
+  name: state.auth.user.name
+});
+
+export default connect(mapStateToProps)(commentForm);

@@ -8,7 +8,7 @@ import EditorPage from "../components/Blog/CreateBlog";
 import SignUpPage from "../components/Auth/SignUp";
 import ForgotPassword from "../components/Auth/ForgotPassword";
 import BlogPost from "../components/Blog/ViewBlog";
-import DisplayBlogs from "../components/Blog/DisplayBlog";
+import Blogs from "../components/Blog/Blogs";
 import ResetPasswordLink from "../components/Auth/ResetPassword";
 
 function RouterPage() {
@@ -33,9 +33,9 @@ function RouterPage() {
             <ForgotPassword />
           </Route>
           <Route path="/blogs">
-            <DisplayBlogs />
+            <Blogs />
           </Route>
-          <Route path="/blog">
+          <Route path="/blog/:post_id">
             <BlogPost />
           </Route>
           <Route path="/reset-password/:token">

@@ -52,7 +52,7 @@ const NavBar = props => {
             </li>
           ) : (
             <button
-              className="navbar__item navbar__button"
+              className="navbar__button navbar__link navbar__item "
               onClick={props.logoutUser}
             >
               Log Out
