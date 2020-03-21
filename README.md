@@ -10,7 +10,11 @@
 
   ```bash
   yarn
-  yarn dev
+  yarn start
   ```
 
 - Now go on http://localhost:3000/ in a browser to see the app.
+
+### Server Repo 
+
+- [Server](https://github.com/chauhanparth210/ProgrammingClub_SEN_Backend)
