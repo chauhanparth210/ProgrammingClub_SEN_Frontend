@@ -6,14 +6,16 @@ import { NavLink } from "react-router-dom";
 
 class DisplayBlog extends Component {
   state = {
-    posts: []
+    posts: [],
+    filteredList: []
   };
 
   componentDidMount() {
     axios.get(`${SERVER_URL}/post`).then(posts => {
       const { data } = posts;
       this.setState({
-        posts: data
+        posts: data,
+        filteredList: data
       });
       // console.log(this.state.posts);
     });
@@ -34,11 +36,31 @@ class DisplayBlog extends Component {
       .catch(err => console.log(err));
     // console.log(id);
   };
-
+  changeHandler = e => {
+    let currentList = [];
+    let newList = [];
+    if (e.target.value !== "") {
+      currentList = this.state.filteredList;
+      newList = currentList.filter(item => {
+        const itemLC = item.title.toLowerCase();
+        const filter = e.target.value.toLowerCase();
+        return itemLC.includes(filter);
+      });
+    } else {
+      newList = this.state.filteredList;
+    }
+    this.setState({ posts: newList });
+  };
   render() {
     const { posts } = this.state;
     return (
       <div className="blogs">
+        <input
+          className="form__input padding-up"
+          type="text"
+          placeholder="Search..."
+          onChange={this.changeHandler}
+        />
         {posts.map(post => (
           <div className="blog__card" key={post._id}>
             <NavLink
