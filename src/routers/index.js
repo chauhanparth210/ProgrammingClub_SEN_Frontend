@@ -10,6 +10,9 @@ import ForgotPassword from "../components/Auth/ForgotPassword";
 import BlogPost from "../components/Blog/ViewBlog";
 import Blogs from "../components/Blog/Blogs";
 import ResetPasswordLink from "../components/Auth/ResetPassword";
+import QnA from "../components/QnA";
+import AskQuestion from "../components/QnA/AskQuestion";
+import DisplayAnswer from "../components/QnA/DisplayAnswer";
 
 function RouterPage() {
   return (
@@ -40,6 +43,15 @@ function RouterPage() {
           </Route>
           <Route path="/reset-password/:token">
             <ResetPasswordLink />
+          </Route>
+          <Route path="/qna" exact>
+            <QnA />
+          </Route>
+          <Route path="/qna/:qID" exact>
+            <DisplayAnswer />
+          </Route>
+          <Route path="/ask-question">
+            <AskQuestion />
           </Route>
         </Switch>
       </div>

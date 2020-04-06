@@ -6,7 +6,7 @@ import "./style.scss";
 import { connect } from "react-redux";
 import { logoutUser } from "../../store/Actions/authActions";
 
-const NavBar = props => {
+const NavBar = (props) => {
   return (
     <div className="navbar">
       <div className="navbar__logo">
@@ -40,6 +40,15 @@ const NavBar = props => {
               Blogs
             </NavLink>
           </li>
+          <li className="navbar__link">
+            <NavLink
+              to="/qna"
+              activeClassName="active__link"
+              className="navbar__item"
+            >
+              QnA
+            </NavLink>
+          </li>
           {!props.isAuthenticated ? (
             <li className="navbar__link">
               <NavLink
@@ -64,8 +73,8 @@ const NavBar = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { logoutUser })(NavBar);
