@@ -13,6 +13,7 @@ import ResetPasswordLink from "../components/Auth/ResetPassword";
 import QnA from "../components/QnA";
 import AskQuestion from "../components/QnA/AskQuestion";
 import DisplayAnswer from "../components/QnA/DisplayAnswer";
+import WriteAnswer from "../components/QnA/WriteAnswer";
 
 function RouterPage() {
   return (
@@ -52,6 +53,9 @@ function RouterPage() {
           </Route>
           <Route path="/ask-question">
             <AskQuestion />
+          </Route>
+          <Route path="/qna/:qID/answer">
+            <WriteAnswer />
           </Route>
         </Switch>
       </div>

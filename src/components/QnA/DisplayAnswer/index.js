@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Vote from "../../../asserts/vote_triangle.png";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 class DisplayAnswer extends Component {
   state = {
@@ -49,7 +50,9 @@ class DisplayAnswer extends Component {
       <div className="ans">
         <div className="ans__title">{question.question}</div>
         <div className="ans__button">
-          <div className="form__submit">+ Add your answer</div>
+          <NavLink to="/qna/1/answer" style={{ textDecoration: "none" }}>
+            <div className="form__submit">+ Add your answer</div>
+          </NavLink>
         </div>
         <div className="ans__answers">
           {question.answers.map((ans) => (
@@ -68,11 +71,14 @@ class DisplayAnswer extends Component {
                 </div>
                 <div className="ans__ans--text">{ans.answer}</div>
               </div>
-              {/* <div className="ans__stamp">
+              <div className="ans__stamp">
                 <div>
-                  <span>{ans.user.name}</span>
+                  <span>{new Date().toDateString()}</span>
                 </div>
-              </div> */}
+                <div style={{ fontWeight: "bold" }}>
+                  <span>{": " + ans.user.name}</span>
+                </div>
+              </div>
             </>
           ))}
         </div>
