@@ -1,36 +1,27 @@
 import React, { Component } from "react";
 import "./style.scss";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { SERVER_URL } from "../../utils/constants";
 
 class QnA extends Component {
   state = {
-    questions: [
-      {
-        question:
-          "how to work with node.js and mongodb?how to work with node.js and mongodb?how to work with node.js and mongodb?",
-        id: 1,
-      },
-      {
-        question: "how to work with React.js and firebase?",
-        id: 12,
-      },
-      {
-        question: "how to work with MERN Stack?",
-        id: 13,
-      },
-      {
-        question:
-          "how to work with node.js and mongodb?how to work with node.js and mongodb?how to work with node.js and mongodb?",
-        id: 14,
-      },
-      {
-        question: "how to work with React.js and firebase?",
-        id: 15,
-      },
-    ],
+    questions: [],
   };
+
+  componentDidMount() {
+    axios.get(`${SERVER_URL}/question`).then((questions) => {
+      const { data } = questions;
+      // console.log(data);
+      this.setState({
+        questions: data,
+      });
+    });
+  }
+
   render() {
     const { questions } = this.state;
+    console.log(questions);
     return (
       <div className="qna">
         <div className="qna__title">
@@ -43,8 +34,8 @@ class QnA extends Component {
         </div>
         <div className="qna ">
           {questions.map((question) => (
-            <div className="qna__question">
-              <NavLink to={`/qna/${question.id}`} className="qna__link">
+            <div className="qna__question" key={question._id}>
+              <NavLink to={`/qna/${question._id}`} className="qna__link">
                 {question.question}
               </NavLink>
             </div>

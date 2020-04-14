@@ -1,6 +1,10 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { SERVER_URL } from "../../../utils/constants";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 const AskQuestion = ({
   errors,
@@ -53,26 +57,44 @@ const AskQuestion = ({
   );
 };
 
-const FormikEnhance = withFormik({
-  mapPropsToValues: ({ question }) => {
-    return {
-      question: question || "",
-    };
-  },
-  validationSchema: Yup.object().shape({
-    question: Yup.string().required("Question is required"),
-  }),
-  handleSubmit: (
-    values,
-    { resetForm, setSubmitting, setErrors, ...formikBag }
-  ) => {
-    let { from } = formikBag.props.location.state || {
-      from: { pathname: "/" },
-    };
-    formikBag.props.loginUser(values, formikBag.props.history, from);
-    resetForm();
-    setSubmitting(false);
-  },
-})(AskQuestion);
+const FormikEnhance = withRouter(
+  withFormik({
+    mapPropsToValues: ({ question }) => {
+      return {
+        question: question || "",
+      };
+    },
+    validationSchema: Yup.object().shape({
+      question: Yup.string().required("Question is required"),
+    }),
+    handleSubmit: (
+      values,
+      { resetForm, setSubmitting, setErrors, ...formikBag }
+    ) => {
+      axios
+        .post(`${SERVER_URL}/question`, {
+          question: values.question,
+          user: formikBag.props.id,
+        })
+        .then((res) => {
+          // toast.success(`${res.data.message}`);
+          resetForm();
+          setSubmitting(false);
+          formikBag.props.history.push("/qna");
+        })
+        .catch((err) => {
+          // if (typeof err.response !== undefined) {
+          //   toast.error(`Unable to send the mail!..`);
+          // } else {
+          // toast.error(`${err.response.data.message}`);
+          // }
+        });
+    },
+  })(AskQuestion)
+);
 
-export default FormikEnhance;
+const mapStateToProps = (state) => ({
+  id: state.auth.user.id,
+});
+
+export default connect(mapStateToProps)(FormikEnhance);

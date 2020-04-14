@@ -2,61 +2,42 @@ import React, { Component } from "react";
 import Vote from "../../../asserts/vote_triangle.png";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { SERVER_URL } from "../../../utils/constants";
+import Moment from "react-moment";
 
 class DisplayAnswer extends Component {
   state = {
     question: {
-      question:
-        " how to work with node.js and mongodb?how to work with node.js and mongodb?how to work with node.js and mongodb?",
-      user: {
-        name: "Parth Chauhan",
-      },
-      date: new Date(),
-      id: 1,
-      answers: [
-        {
-          answer:
-            "this is why I need some time to make because i want to make it dynamic",
-          date: new Date(),
-          upvote: 1,
-          user: {
-            name: "Darshan",
-          },
-        },
-        {
-          answer:
-            "this is why I need some time fsad sdfa ss de sa no beacuse I make it static that's why....",
-          date: new Date(),
-          upvote: 5,
-          user: {
-            name: "Karan",
-          },
-        },
-        {
-          answer:
-            "this is why I need some time to make because i want to make it dynamic",
-          date: new Date(),
-          upvote: 2,
-          user: {
-            name: "Parth Chuahan",
-          },
-        },
-      ],
+      question: "",
+      answers: [],
     },
   };
+
+  async componentDidMount() {
+    const { params } = this.props.match;
+    const data = await axios.get(`${SERVER_URL}/question/${params.qID}`);
+    this.setState({ question: data.data.question });
+    console.log(data);
+  }
+
   render() {
     const { question } = this.state;
+    const { params } = this.props.match;
     return (
       <div className="ans">
         <div className="ans__title">{question.question}</div>
         <div className="ans__button">
-          <NavLink to="/qna/1/answer" style={{ textDecoration: "none" }}>
+          <NavLink
+            to={`/qna/${params.qID}/answer`}
+            style={{ textDecoration: "none" }}
+          >
             <div className="form__submit">+ Add your answer</div>
           </NavLink>
         </div>
         <div className="ans__answers">
           {question.answers.map((ans) => (
-            <>
+            <div key={ans._id}>
               <div className="ans__ans">
                 <div className="ans__votes">
                   <img src={Vote} alt="Vote" height="30" width="30" />
@@ -73,13 +54,13 @@ class DisplayAnswer extends Component {
               </div>
               <div className="ans__stamp">
                 <div>
-                  <span>{new Date().toDateString()}</span>
+                  <Moment format="DD/MM/YYYY HH:MM">{ans.date}</Moment>
                 </div>
                 <div style={{ fontWeight: "bold" }}>
-                  <span>{": " + ans.user.name}</span>
+                  <span>{"-- " + ans.user.name}</span>
                 </div>
               </div>
-            </>
+            </div>
           ))}
         </div>
       </div>
@@ -87,4 +68,4 @@ class DisplayAnswer extends Component {
   }
 }
 
-export default DisplayAnswer;
+export default withRouter(DisplayAnswer);
