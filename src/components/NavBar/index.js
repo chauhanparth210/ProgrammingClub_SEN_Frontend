@@ -49,6 +49,24 @@ const NavBar = (props) => {
               QnA
             </NavLink>
           </li>
+          <li className="navbar__link">
+            <NavLink
+              to="/contests"
+              activeClassName="active__link"
+              className="navbar__item"
+            >
+              Contests
+            </NavLink>
+          </li>
+          <li className="navbar__link">
+            <NavLink
+              to="/quiz"
+              activeClassName="active__link"
+              className="navbar__item"
+            >
+              Quiz
+            </NavLink>
+          </li>
           {!props.isAuthenticated ? (
             <li className="navbar__link">
               <NavLink
@@ -67,6 +85,15 @@ const NavBar = (props) => {
               Log Out
             </button>
           )}
+          <li className="navbar__link">
+            <a
+              href="/compiler"
+              activeClassName="active__link"
+              className="navbar__item"
+            >
+              IDE
+            </a>
+          </li>
         </ul>
       </div>
     </div>

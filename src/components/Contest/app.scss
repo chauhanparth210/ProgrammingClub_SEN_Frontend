@@ -1,0 +1,26 @@
+.p-5 {
+    padding-left: 20px ;
+    padding-right: 20px;
+}
+
+.mt-2 {
+    margin-top: 10px;
+}
+
+.font {
+    font-size: small;
+}
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/menu.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/item.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/tab.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/card.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/table.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/button.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/input.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/label.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/comment.min.css');
+a {
+    text-decoration: none;
+}

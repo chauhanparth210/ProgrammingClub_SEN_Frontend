@@ -14,6 +14,13 @@ import QnA from "../components/QnA";
 import AskQuestion from "../components/QnA/AskQuestion";
 import DisplayAnswer from "../components/QnA/DisplayAnswer";
 import WriteAnswer from "../components/QnA/WriteAnswer";
+import Contests from "../components/Contest"
+import Home from "../components/Quiz/Home";
+import QuizInstructions from "../components/Quiz/quiz/QuizInstructions";
+import Play from "../components/Quiz/quiz/Play";
+import QuizSummary from "../components/Quiz/quiz/QuizSummary.js";
+import Discussion from "../components/Contest/Discussion";
+import Compiler from "../components/Contest/Compiler";
 
 function RouterPage() {
   return (
@@ -57,6 +64,19 @@ function RouterPage() {
           <Route path="/qna/:qID/answer">
             <WriteAnswer />
           </Route>
+          <Route path="/contests">
+            <Contests />
+          </Route>
+          <Route path="/discussion/:title">
+            <Discussion />
+          </Route>
+          <Route path="/compiler">
+            <Compiler />
+          </Route>
+          <Route path="/quiz" exact component={Home} />
+          <Route path="/play/instructions" exact component={QuizInstructions} />
+          <Route path="/play/quiz" exact component={Play} />
+          <Route path="/play/quizSummary" exact component={QuizSummary} />
         </Switch>
       </div>
     </>

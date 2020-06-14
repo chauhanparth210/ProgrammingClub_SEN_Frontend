@@ -1,0 +1,122 @@
+.playpage .questions {
+  background-color: white;
+  border-left: 5px solid black;
+  width: 80%;
+  margin: $lg auto 0 auto;
+  padding: 80px;
+
+  h2 {
+      text-align: center;
+      font-weight: 800;
+  }
+
+  .lifeline-container {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .lifeline {
+      position: relative;
+      top: -3px;
+  }
+
+  .lifeline-icon {
+      color: $green;
+      cursor: pointer;
+  }
+
+  .lifeline-icon:hover {
+      background: none;
+      color: darken($orange, 10%);
+  }
+
+  .timer {
+    display: flexbox;
+    margin-bottom: 20px;
+  }
+
+  .counter {
+    float: right;
+  }
+
+  .timer-container {
+    margin-bottom: 50px;
+  }
+
+  h5 {
+      font-size: 1.5rem;
+      margin-bottom: lg;
+      line-height: 1.5;
+      text-align: center;
+      font-weight: 600;
+  }
+
+  .options-container {
+      display: inline-block;
+      width: 50%;
+  }
+
+  .option {
+      background-color: rgb(70, 64, 64);
+      border-radius: $button-radius;
+      color: $white;
+      cursor: pointer;
+      margin: $md auto;
+      padding: $normal;
+      transition: 0.3s linear all;
+      text-align: center;
+      width: 90%;
+  }
+
+  .option:hover {
+      background-color: darken(black, 20%);
+  }
+}
+
+.playpage .button-container {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 auto $sm auto;
+  padding: $md;
+  width: 80%;
+}
+
+.playpage .button-container button {
+  border: none;
+  color: $off-white;
+  cursor: pointer;
+  font-family: $quicksand;
+  margin-right: $md;
+  padding: $xs $sm;
+  width: $xxlg;
+}
+
+.playpage .button-container button:first-child {
+  background-color: darken($blue, 10%);
+  box-shadow: $shadow;
+  transition: 0.2s linear all
+}
+
+.playpage .button-container button:first-child:hover {
+  background-color: darken($blue, 20%);
+}
+
+.playpage .button-container button:nth-child(2) {
+  background-color: $green;
+  box-shadow: $shadow;
+  transition: 0.2s linear all
+}
+
+.playpage .button-container button:nth-child(2):hover {
+  background-color: darken($green, 10%);
+}
+
+.playpage .button-container button:last-child {
+  background-color: $red;
+  box-shadow: $shadow;
+  transition: 0.2s linear all
+}
+
+.playpage .button-container button:last-child:hover {
+  background-color: darken($red, 10%);
+}

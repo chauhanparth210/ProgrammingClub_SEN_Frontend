@@ -1,0 +1,136 @@
+[
+  {
+    "question": "What is part of a database that holds only one type of information?",
+    "optionA": "Report",
+    "optionB": "field",
+    "optionC": "Record",
+    "optionD": "file",
+    "answer": "field"
+  },
+
+  {
+    "question": " OS computer abbreviation usually means ?",
+    "optionA": "Order of Significance",
+    "optionB": "Open Software",
+    "optionC": "Operating System",
+    "optionD": "Optical Sensor",
+    "answer": "Operating System"
+  },
+
+  {
+    "question": "Which of the following languages is more suited to a structured program?",
+    "optionA": "PL/1",
+    "optionB": "FORTRAN",
+    "optionC": "BASIC",
+    "optionD": "PASCAL",
+    "answer": "PASCAL"
+  },
+
+  {
+    "question": "Which of the following computer language is used for artificial intelligence?",
+    "optionA": "FORTRAN",
+    "optionB": "PROLOG",
+    "optionC": "C",
+    "optionD": "COBOL",
+    "answer": "PROLOG"
+  },
+
+  {
+    "question": "A program component that allows structuring of a program in an unusual way is known as",
+    "optionA": "Correlation",
+    "optionB": "Coroutine",
+    "optionC": "Diagonalization",
+    "optionD": "Queue",
+    "answer": "Coroutine"
+  },
+
+  {
+    "question": "The part of machine level instruction, which tells the central processor what has to be done, is",
+    "optionA": "Operation code",
+    "optionB": "Locator",
+    "optionC": "Address",
+    "optionD": "Flip Flop",
+    "answer": "Operation code"
+  },
+
+  {
+    "question": "A system program that combines the separately compiled modules of a program into a form suitable for execution",
+    "optionA": "assembler",
+    "optionB": "linking loader",
+    "optionC": "cross compiler",
+    "optionD": "load and go",
+    "answer": "linking loader"
+  },
+
+  {
+    "question": "A device that converts mechanical into electrical energy is?",
+    "optionA": "solar cell",
+    "optionB": "thermocouple",
+    "optionC": "chemical cell",
+    "optionD": "generator",
+    "answer": "generator"
+  },
+
+  {
+    "question": "What command is used to count the total number of lines, words, and characters contained in a file?",
+    "optionA": "countw",
+    "optionB": "wcount",
+    "optionC": "wc",
+    "optionD": "count p",
+    "answer": "wc"
+  },
+
+  {
+    "question": "In Linux,What command is used with vi editor to delete a single character?",
+    "optionA": "x",
+    "optionB": "y",
+    "optionC": "a",
+    "optionD": "z",
+    "answer": "x"
+  },
+
+  {
+    "question": "A station in a network forwards incoming packets by placing them on its shortest output queue. What routing algorithm is being used?",
+    "optionA": "hot potato routing",
+    "optionB": "flooding",
+    "optionC": "static routing",
+    "optionD": "delta routing",
+    "answer": "hot potato routing"
+  },
+
+  {
+    "question": "Frames from one LAN can be transmitted to another LAN via the device",
+    "optionA": "Router",
+    "optionB": "Bridge",
+    "optionC": "Repeater",
+    "optionD": "Modem",
+    "answer": "Bridge"
+  },
+
+  {
+    "question": "Which of the following condition is used to transmit two packets over a medium at the same time?",
+    "optionA": "Contention",
+    "optionB": "Collision",
+    "optionC": "Synchronous",
+    "optionD": "Asynchronous",
+    "answer": "Collision"
+  },
+
+  {
+    "question": "In SQL, which command is used to add new rows to a table?",
+    "optionA": "ALTER TABLE",
+    "optionB": "ADD ROW",
+    "optionC": "INSERT",
+    "optionD": "APPEND",
+    "answer": "INSERT"
+  },
+
+  {
+    "question": "What is the name given to the database management system which is able to handle full text data, image data, audio and video?",
+    "optionA": "Full media",
+    "optionB": "Graphics media",
+    "optionC": "Multimedia",
+    "optionD": "Hypertext",
+    "answer": "Multimedia"
+  }
+]
