@@ -7,7 +7,7 @@ import { SERVER_URL } from "../../utils/constants";
 class QnA extends Component {
   state = {
     questions: [],
-    filteredList: []
+    filteredList: [],
   };
 
   componentDidMount() {
@@ -16,17 +16,17 @@ class QnA extends Component {
       // console.log(data);
       this.setState({
         questions: data.question,
-        filteredList: data.question
+        filteredList: data.question,
       });
     });
   }
-  changeHandler = e => {
+  changeHandler = (e) => {
     let currentList = [];
     let newList = [];
     console.log(e.target.value);
     if (e.target.value !== "") {
       currentList = this.state.filteredList;
-      newList = currentList.filter(item => {
+      newList = currentList.filter((item) => {
         const itemLC = item.question.toLowerCase();
         const filter = e.target.value.toLowerCase();
         return itemLC.includes(filter);
@@ -50,8 +50,7 @@ class QnA extends Component {
           type="text"
           placeholder="Search..."
           onChange={this.changeHandler}
-          
-
+          style={{ width: "50%", marginLeft: "25%" }}
         />
         <div className="container">
           <NavLink className="link" to="ask-question">

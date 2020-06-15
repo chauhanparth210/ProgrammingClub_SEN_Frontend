@@ -18,11 +18,13 @@ class DisplayAnswer extends Component {
     const { params } = this.props.match;
     const data = await axios.get(`${SERVER_URL}/question/${params.qID}`);
     this.setState({ question: data.data.question });
-    console.log(data);
   }
+
+  async handleVotes() {}
 
   render() {
     const { question } = this.state;
+    console.log(question);
     const { params } = this.props.match;
     return (
       <div className="ans">
@@ -40,14 +42,21 @@ class DisplayAnswer extends Component {
             <div key={ans._id}>
               <div className="ans__ans">
                 <div className="ans__votes">
-                  <img src={Vote} alt="Vote" height="30" width="30" />
-                  <span>{ans.upvote}</span>
                   <img
                     src={Vote}
                     alt="Vote"
                     height="30"
                     width="30"
-                    style={{ transform: " rotate(180deg)" }}
+                    style={{ cursor: "pointer" }}
+                  />
+                  {/* <span>{ans.upvote}</span> */}
+                  <span>{"0"}</span>
+                  <img
+                    src={Vote}
+                    alt="Vote"
+                    height="30"
+                    width="30"
+                    style={{ transform: " rotate(180deg)", cursor: "pointer" }}
                   />
                 </div>
                 <div className="ans__ans--text">{ans.answer}</div>

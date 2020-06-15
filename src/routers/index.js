@@ -14,13 +14,14 @@ import QnA from "../components/QnA";
 import AskQuestion from "../components/QnA/AskQuestion";
 import DisplayAnswer from "../components/QnA/DisplayAnswer";
 import WriteAnswer from "../components/QnA/WriteAnswer";
-import Contests from "../components/Contest"
+import Contests from "../components/Contest";
 import Home from "../components/Quiz/Home";
 import QuizInstructions from "../components/Quiz/quiz/QuizInstructions";
 import Play from "../components/Quiz/quiz/Play";
 import QuizSummary from "../components/Quiz/quiz/QuizSummary.js";
 import Discussion from "../components/Contest/Discussion";
 import Compiler from "../components/Contest/Compiler";
+import PrivateRoute from "../utils/PrivateRoute";
 
 function RouterPage() {
   return (
@@ -34,9 +35,9 @@ function RouterPage() {
           <Route path="/login">
             <LoginPage />
           </Route>
-          <Route path="/create-blog">
+          <PrivateRoute path="/create-blog">
             <EditorPage />
-          </Route>
+          </PrivateRoute>
           <Route path="/create-account">
             <SignUpPage />
           </Route>
@@ -58,18 +59,18 @@ function RouterPage() {
           <Route path="/qna/:qID" exact>
             <DisplayAnswer />
           </Route>
-          <Route path="/ask-question">
+          <PrivateRoute path="/ask-question">
             <AskQuestion />
-          </Route>
-          <Route path="/qna/:qID/answer">
+          </PrivateRoute>
+          <PrivateRoute path="/qna/:qID/answer">
             <WriteAnswer />
-          </Route>
+          </PrivateRoute>
           <Route path="/contests">
             <Contests />
           </Route>
-          <Route path="/discussion/:title">
+          <PrivateRoute path="/discussion/:title">
             <Discussion />
-          </Route>
+          </PrivateRoute>
           <Route path="/compiler">
             <Compiler />
           </Route>
