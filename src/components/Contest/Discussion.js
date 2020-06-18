@@ -5,8 +5,9 @@ import { SERVER_URL } from "../../utils/constants";
 import { Card, Comment, Header } from 'semantic-ui-react';
 import AddComment from './AddComment';
 import Moment from 'react-moment';
+import { connect } from "react-redux"
 
-const Discussion = () => {
+const Discussion = (props) => {
     const { title } = useParams()
     const [contest, setContest] = useState({})
     useEffect(() => {
@@ -39,14 +40,14 @@ const Discussion = () => {
                             <Comment key={comment._id}>
                                 <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/elliot.jpg' />
                                 <Comment.Content>
-                                    <Comment.Author as="a">Matt</Comment.Author>
+                                    <Comment.Author as="a">{props.name}</Comment.Author>
                                     <Comment.Metadata>
                                         <div><Moment format="DD/MM/YYYY HH:SS">{comment.posted_at}</Moment></div>
                                     </Comment.Metadata>
                                     <Comment.Text>{comment.text}</Comment.Text>
-                                    <Comment.Actions>
+                                    {/* <Comment.Actions>
                                     <Comment.Action>Reply</Comment.Action>
-                                    </Comment.Actions>
+                                    </Comment.Actions> */}
                                 </Comment.Content>
                             </Comment>
                         )
@@ -61,4 +62,8 @@ const Discussion = () => {
     )
 }
 
-export default Discussion
+const mapStateToProps = state => ({
+    name: state.auth.user.name
+  });
+
+export default connect(mapStateToProps)(Discussion)

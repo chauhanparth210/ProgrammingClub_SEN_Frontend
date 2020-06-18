@@ -6,6 +6,7 @@ import "./style.scss";
 import { connect } from "react-redux";
 import { logoutUser } from "../../store/Actions/authActions";
 
+
 const NavBar = (props) => {
   return (
     <div className="navbar">
@@ -22,7 +23,7 @@ const NavBar = (props) => {
       </div>
       <div className="navbar__container">
         <ul className="navbar__items">
-          <li className="navbar__link">
+          {props.isPCMember ? (<li className="navbar__link">
             <NavLink
               to="/create-blog"
               activeClassName="active__link"
@@ -30,7 +31,7 @@ const NavBar = (props) => {
             >
               Create Blog
             </NavLink>
-          </li>
+          </li>) : null}
           <li className="navbar__link">
             <NavLink
               to="/blogs"
@@ -67,6 +68,15 @@ const NavBar = (props) => {
               Quiz
             </NavLink>
           </li>
+          <li className="navbar__link">
+            <a
+              href="/compiler"
+              activeClassName="active__link"
+              className="navbar__item"
+            >
+              IDE
+            </a>
+          </li>
           {!props.isAuthenticated ? (
             <li className="navbar__link">
               <NavLink
@@ -85,15 +95,6 @@ const NavBar = (props) => {
               Log Out
             </button>
           )}
-          <li className="navbar__link">
-            <a
-              href="/compiler"
-              activeClassName="active__link"
-              className="navbar__item"
-            >
-              IDE
-            </a>
-          </li>
         </ul>
       </div>
     </div>
@@ -102,6 +103,7 @@ const NavBar = (props) => {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  isPCMember: state.auth.user.isPCMember
 });
 
 export default connect(mapStateToProps, { logoutUser })(NavBar);

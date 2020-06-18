@@ -42,15 +42,12 @@ class QnA extends Component {
     console.log(questions);
     return (
       <div className="qna">
-        <div className="qna__title">
-          <div className="qna__title--text">Question & Answer</div>
-        </div>
         <input
           className="form__input padding-up container"
           type="text"
           placeholder="Search..."
           onChange={this.changeHandler}
-          style={{ width: "50%", marginLeft: "25%" }}
+          style={{ width: "44%", marginLeft: "27%" }}
         />
         <div className="container">
           <NavLink className="link" to="ask-question">

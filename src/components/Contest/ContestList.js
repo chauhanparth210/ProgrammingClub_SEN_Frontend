@@ -20,12 +20,12 @@ const ContestList = ({ contests }) => {
                     {
                         contests.map((contest, i) => 
                             <Table.Row key={i}>
-                                <Table.Cell>{contest.title}</Table.Cell>
+                                <Table.Cell>{contest.title.replace("#","")}</Table.Cell>
                                 <Table.Cell>{contest.place}</Table.Cell>
                                 <Table.Cell><Moment format="MM Do YY HH:MM" >{contest.startTime}</Moment></Table.Cell>
                                 <Table.Cell><Moment format="MM Do YY HH:MM" >{contest.EndTime}</Moment></Table.Cell>
                                 <Table.Cell>
-                                    <Link to={"/discussion/"+contest.title}><Button
+                                    <Link to={"/discussion/"+contest.title.replace("#","")}><Button
                                             basic
                                             color='black'
                                             content='Discussion'

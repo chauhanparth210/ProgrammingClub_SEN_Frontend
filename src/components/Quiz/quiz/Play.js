@@ -7,9 +7,6 @@ import "react-toastify/dist/ReactToastify.css";
 import questions from "../questions.json";
 import isEmpty from "../../../utils/is-empty";
 
-import correctNotification from "../../../asserts/audio/correct-answer.mp3";
-import wrongNotification from "../../../asserts/audio/wrong-answer.mp3";
-import buttonSound from "../../../asserts/audio/button-sound.mp3";
 import Icon from "@mdi/react";
 import { mdiLightbulbOnOutline, mdiSetCenter, mdiTimerOutline } from "@mdi/js";
 
@@ -107,7 +104,7 @@ class Play extends Component {
   };
 
   handleNextButtonClick = () => {
-    this.playButtonSound();
+    // this.playButtonSound();
     if (this.state.nextQuestion !== undefined) {
       this.setState(
         prevState => ({
@@ -126,7 +123,7 @@ class Play extends Component {
   };
 
   handlePreviousButtonClick = () => {
-    this.playButtonSound();
+    // this.playButtonSound();
     if (this.state.previousQuestion !== undefined) {
       this.setState(
         prevState => ({
@@ -145,7 +142,7 @@ class Play extends Component {
   };
 
   handleQuitButtonClick = () => {
-    this.playButtonSound();
+    // this.playButtonSound();
     if (window.confirm("Are you sure you want to quit?")) {
       this.props.history.push("/");
     }
@@ -170,9 +167,9 @@ class Play extends Component {
     }
   };
 
-  playButtonSound = () => {
-    this.buttonSound.current.play();
-  };
+  // playButtonSound = () => {
+  //   this.buttonSound.current.play();
+  // };
 
   correctAnswer = () => {
     toast("Correct Answer!", {
@@ -434,11 +431,6 @@ class Play extends Component {
           <Helmet>
             <title>Quiz Page</title>
           </Helmet>
-          <Fragment>
-            <audio ref={this.correctSound} src={correctNotification} />
-            <audio ref={this.wrongSound} src={wrongNotification} />
-            <audio ref={this.buttonSound} src={buttonSound} />
-          </Fragment>
           <div className="questions">
             <h1 style={{ textAlign: "center" }}>Quiz Mode</h1>
             <div className="lifeline-container">

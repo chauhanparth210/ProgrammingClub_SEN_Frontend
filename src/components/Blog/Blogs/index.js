@@ -3,6 +3,7 @@ import "./style.scss";
 import axios from "axios";
 import { SERVER_URL } from "../../../utils/constants";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux"
 
 class DisplayBlog extends Component {
   state = {
@@ -74,8 +75,8 @@ class DisplayBlog extends Component {
                 {" "}
                 Claps : <span style={{ fontWeight: "bold" }}>{post.likes}</span>
               </div>
-              <div style={{ display: "flex" }}>
-                {/* <div className="blog__card--button ">Read more</div> */}
+              {this.props.isPCMember ? (
+                <div style={{ display: "flex" }}>
                 <div
                   className="blog__card--button"
                   onClick={() => {
@@ -85,6 +86,7 @@ class DisplayBlog extends Component {
                   Delete
                 </div>
               </div>
+              ) : null }
             </div>
           </div>
         ))}
@@ -93,4 +95,9 @@ class DisplayBlog extends Component {
   }
 }
 
-export default DisplayBlog;
+const mapStateToProps = state => ({
+  isPCMember: state.auth.user.isPCMember
+});
+
+
+export default connect(mapStateToProps)(DisplayBlog);
