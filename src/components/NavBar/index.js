@@ -71,6 +71,7 @@ const NavBar = (props) => {
           <li className="navbar__link">
             <a
               href="/compiler"
+              target="_blank"
               activeClassName="active__link"
               className="navbar__item"
             >
