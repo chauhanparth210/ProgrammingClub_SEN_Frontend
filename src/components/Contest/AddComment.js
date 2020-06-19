@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
+import {connect} from "react-redux"
 
-const AddComment = ({ contest }) => {
+const AddComment = ({ contest ,name}) => {
     const [comment, setComment] = useState('')
     const socket = require('./socket').default
     const addComment = async (e) => {
         e.preventDefault()
         if(comment !== '') {
             if(socket !== undefined) {
-                contest.comments.push({ text: comment, posted_at: Date.now() })
+                contest.comments.push({ text: comment, posted_at: Date.now(),name  })
                 await socket.emit('addcomment', { contest, comment })
             }
             setComment('')
@@ -28,4 +29,8 @@ const AddComment = ({ contest }) => {
     )
 }
 
-export default AddComment
+const mapStateToProps = state => ({
+    name: state.auth.user.name
+  });
+
+export default connect(mapStateToProps)(AddComment)
