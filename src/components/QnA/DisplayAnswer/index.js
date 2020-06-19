@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { SERVER_URL } from "../../../utils/constants";
 import Moment from "react-moment";
+import { connect } from "react-redux";
 
 class DisplayAnswer extends Component {
   state = {
@@ -20,11 +21,35 @@ class DisplayAnswer extends Component {
     this.setState({ question: data.data.question });
   }
 
-  async handleVotes() {}
+  async handleUpVotes(ansID) {
+    // eslint-disable-next-line array-callback-return
+    this.state.question.answers.filter((ans, i) => {
+      if (ansID === ans._id) {
+        const ans = this.state.question.answers;
+        ans[i].vote++;
+        this.setState({ ...this.state.question.answers, ans });
+      }
+    });
+    const { params } = this.props.match;
+    await axios.post(`${SERVER_URL}/question/${params.qID}/${ansID}/upvote`);
+  }
+
+  async handleDownVotes(ansID) {
+    // eslint-disable-next-line array-callback-return
+    this.state.question.answers.filter((ans, i) => {
+      if (ansID === ans._id) {
+        const ans = this.state.question.answers;
+        ans[i].vote--;
+        this.setState({ ...this.state.question.answers, ans });
+      }
+    });
+    const { params } = this.props.match;
+    await axios.post(`${SERVER_URL}/question/${params.qID}/${ansID}/downvote`);
+  }
 
   render() {
     const { question } = this.state;
-    console.log(question);
+    // console.log(question);
     const { params } = this.props.match;
     return (
       <div className="ans">
@@ -42,22 +67,31 @@ class DisplayAnswer extends Component {
             <div key={ans._id}>
               <div className="ans__ans">
                 <div className="ans__votes">
-                  <img
-                    src={Vote}
-                    alt="Vote"
-                    height="30"
-                    width="30"
-                    style={{ cursor: "pointer" }}
-                  />
+                  {this.props.isAuthenticated ? (
+                    <img
+                      src={Vote}
+                      alt="Vote"
+                      onClick={() => this.handleUpVotes(ans._id)}
+                      height="30"
+                      width="30"
+                      style={{ cursor: "pointer" }}
+                    />
+                  ) : null}
                   {/* <span>{ans.upvote}</span> */}
-                  <span>{"0"}</span>
-                  <img
-                    src={Vote}
-                    alt="Vote"
-                    height="30"
-                    width="30"
-                    style={{ transform: " rotate(180deg)", cursor: "pointer" }}
-                  />
+                  <span style={{ fontWeight: "bolder" }}>{ans.vote}</span>
+                  {this.props.isAuthenticated ? (
+                    <img
+                      src={Vote}
+                      alt="Vote"
+                      height="30"
+                      onClick={() => this.handleDownVotes(ans._id)}
+                      width="30"
+                      style={{
+                        transform: " rotate(180deg)",
+                        cursor: "pointer",
+                      }}
+                    />
+                  ) : null}
                 </div>
                 <div className="ans__ans--text">{ans.answer}</div>
               </div>
@@ -77,4 +111,8 @@ class DisplayAnswer extends Component {
   }
 }
 
-export default withRouter(DisplayAnswer);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default withRouter(connect(mapStateToProps)(DisplayAnswer));

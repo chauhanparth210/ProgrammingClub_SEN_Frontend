@@ -39,7 +39,7 @@ class QnA extends Component {
 
   render() {
     const { questions } = this.state;
-    console.log(questions);
+    // console.log(questions);
     return (
       <div className="qna">
         <input
