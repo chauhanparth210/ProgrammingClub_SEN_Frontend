@@ -43,7 +43,7 @@ const Discussion = (props) => {
                                 <Comment.Content>
                                     <Comment.Author as="a">{comment.name}</Comment.Author>
                                     <Comment.Metadata>
-                                        <div><Moment format="DD/MM/YYYY HH:SS">{comment.posted_at}</Moment></div>
+                                        <div><Moment format="DD/MM/YYYY HH:MM">{comment.posted_at}</Moment></div>
                                     </Comment.Metadata>
                                     <Comment.Text>{comment.text}</Comment.Text>
                                     {/* <Comment.Actions>

@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import answer from "../../../asserts/img/answer.png";
-import fiftyFifty from "../../../asserts/img/fiftyFifty.PNG";
-import hints from "../../../asserts/img/hints.PNG";
-import options from "../../../asserts/img/options.PNG";
+// import answer from "../../../asserts/img/answer.png";
+// import fiftyFifty from "../../../asserts/img/fiftyFifty.PNG";
+// import hints from "../../../asserts/img/hints.PNG";
+// import options from "../../../asserts/img/options.PNG";
 import Icon from "@mdi/react";
 import { mdiLightbulbOnOutline, mdiSetCenter } from "@mdi/js";
 
@@ -25,12 +25,12 @@ const QuizInstructions = () => (
           <li>Each game consists of 15 questions.</li>
           <li>
             <p>Every question contains 4 options.</p>
-            <img src={options} alt="Quiz App options example" />
+            {/* <img src={options} alt="Quiz App options example" /> */}
           </li>
           <li>
             Select the option which best answers the question by clicking (or
             selecting) it.
-            <img src={answer} alt="Quiz App answer example" />
+            {/* <img src={answer} alt="Quiz App answer example" /> */}
           </li>
           <li>
             Each game has 2 lifelines namely:
@@ -44,7 +44,7 @@ const QuizInstructions = () => (
             <Icon path={mdiSetCenter} size={1} />
             will remove 2 wrong answers, leaving the correct answer and one
             wrong answer
-            <img src={fiftyFifty} alt="Quiz App Fifty-Fifty example" />
+            {/* <img src={fiftyFifty} alt="Quiz App Fifty-Fifty example" /> */}
           </li>
           <li>
             Using a hint by clicking the icon
@@ -52,7 +52,7 @@ const QuizInstructions = () => (
             will remove one wrong answer leaving two wrong answers and one
             correct answer. You can use as many hints as possible on a single
             question.
-            <img src={hints} alt="Quiz App hints example" />
+            {/* <img src={hints} alt="Quiz App hints example" /> */}
           </li>
           <li>
             Feel free to quit (or retire from) the game at any time. In that

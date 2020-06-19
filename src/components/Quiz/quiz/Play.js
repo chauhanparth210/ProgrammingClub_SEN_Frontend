@@ -91,14 +91,14 @@ class Play extends Component {
 
   handleOptionClick = e => {
     if (e.target.innerHTML.toLowerCase() === this.state.answer.toLowerCase()) {
-      this.correctTimeout = setTimeout(() => {
-        this.correctSound.current.play();
-      }, 500);
+      // this.correctTimeout = setTimeout(() => {
+      //   this.correctSound.current.play();
+      // }, 500);
       this.correctAnswer();
     } else {
-      this.wrongTimeout = setTimeout(() => {
-        this.wrongSound.current.play();
-      }, 500);
+      // this.wrongTimeout = setTimeout(() => {
+      //   this.wrongSound.current.play();
+      // }, 500);
       this.wrongAnswer();
     }
   };
